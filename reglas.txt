@@ -1,1 +1,240 @@
+15 REGLAS EN LENGUAJE NATURAL
+
+
+TABLA DE CLASIFICACIÓN DE VARIABLES
+
+
+Variable             | Tipo en Java | Ejemplo de valor
+---------------------|--------------|------------------
+precioCafe           | double       | 8500.0
+cantidadTazas        | int          | 2
+gramosCafe           | int          | 20
+temperaturaAgua      | double       | 92.5
+nivelAzucar          | int          | 2
+calidadCafe          | double       | 85.0
+saldoCliente         | double       | 30000.0
+puntosCliente        | int          | 650
+cafeDisponible       | boolean      | true
+pedidoActivo         | boolean      | true
+clienteFrecuente     | boolean      | true
+cafeTostado          | boolean      | true
+cafeMolido           | boolean      | true
+aguaDisponible       | boolean      | true
+tieneLeche           | boolean      | true
+tieneCupon           | boolean      | false
+pedidoPreparado      | boolean      | false
+tipoCafe             | String       | "Arabica"
+nombreCliente        | String       | "Steven"
+
+
+
+REGLAS CON UNA SOLA CONDICIÓN
+
+
+Regla 1 — Café disponible
+
+Si hay café disponible, se informa que el café puede ser
+solicitado.
+
+SI (cafeDisponible == VERDADERO) {
+    MOSTRAR("El café está disponible")
+}
+
+
+Regla 2 — Cliente frecuente
+
+Si el cliente es frecuente, se informa que puede recibir
+un beneficio.
+
+SI (clienteFrecuente == VERDADERO) {
+    MOSTRAR("El cliente frecuente tiene un beneficio")
+}
+
+
+Regla 3 — Temperatura adecuada
+
+Si la temperatura del agua es mayor o igual a 90 grados,
+se considera adecuada para preparar el café.
+
+SI (temperaturaAgua >= 90) {
+    MOSTRAR("La temperatura del agua es adecuada")
+}
+
+
+
+REGLAS CON CONDICIONES COMPUESTAS
+USANDO Y / O
+
+
+
+Regla 4 — Preparación del café
+
+El café puede prepararse si está molido Y hay agua
+disponible.
+
+SI (cafeMolido == VERDADERO Y aguaDisponible == VERDADERO) {
+    MOSTRAR("El café puede prepararse")
+}
+
+Condición lógica:
+cafeMolido == VERDADERO AND aguaDisponible == VERDADERO
+
+
+Regla 5 — Compra autorizada
+
+El cliente puede realizar la compra si tiene suficiente
+saldo O tiene un cupón.
+
+SI (saldoCliente >= precioCafe O tieneCupon == VERDADERO) {
+    MOSTRAR("Compra autorizada")
+}
+
+Condición lógica:
+saldoCliente >= precioCafe OR tieneCupon == VERDADERO
+
+
+Regla 6 — Café con leche
+
+El café con leche puede prepararse si hay café disponible
+Y hay leche.
+
+SI (cafeDisponible == VERDADERO Y tieneLeche == VERDADERO) {
+    MOSTRAR("Café con leche disponible")
+}
+
+Condición lógica:
+cafeDisponible == VERDADERO AND tieneLeche == VERDADERO
+
+
+
+REGLAS QUE COMBINAN TIPOS DE DATOS
+DIFERENTES
+
+
+
+Regla 7 — Pedido permitido
+
+El cliente puede realizar un pedido si tiene suficiente
+saldo Y el pedido está activo.
+
+SI (saldoCliente >= precioCafe Y pedidoActivo == VERDADERO) {
+    MOSTRAR("El pedido puede realizarse")
+}
+
+Tipos:
+saldoCliente -> DECIMAL
+precioCafe -> DECIMAL
+pedidoActivo -> BOOLEANO
+
+
+Regla 8 — Preparación correcta
+
+El café puede prepararse correctamente cuando se utilizan
+al menos 18 gramos de café Y la temperatura del agua es
+mayor o igual a 90 grados.
+
+SI (gramosCafe >= 18 Y temperaturaAgua >= 90) {
+    MOSTRAR("Las condiciones de preparación son adecuadas")
+}
+
+Tipos:
+gramosCafe -> ENTERO
+temperaturaAgua -> DECIMAL
+
+
+Regla 9 — Café de buena calidad
+
+El café se considera de buena calidad cuando su calidad es
+mayor o igual a 80 Y el café ha sido tostado.
+
+SI (calidadCafe >= 80 Y cafeTostado == VERDADERO) {
+    MOSTRAR("El café tiene buena calidad")
+}
+
+Tipos:
+calidadCafe -> DECIMAL
+cafeTostado -> BOOLEANO
+
+
+Regla 10 — Cliente especial
+
+Un cliente puede recibir un beneficio especial si es un
+cliente frecuente O tiene al menos 500 puntos.
+
+SI (clienteFrecuente == VERDADERO O puntosCliente >= 500) {
+    MOSTRAR("El cliente tiene un beneficio especial")
+}
+
+Tipos:
+clienteFrecuente -> BOOLEANO
+puntosCliente -> ENTERO
+
+
+Regla 11 — Precio del café
+
+Si el precio del café es menor a 5000, se informa que
+el precio es bajo.
+
+SI (precioCafe < 5000) {
+    MOSTRAR("El precio del café es bajo")
+}
+
+Tipo:
+precioCafe -> DECIMAL
+
+
+Regla 12 — Pedido listo para servir
+
+El pedido puede servirse si está preparado Y hay café
+disponible.
+
+SI (pedidoPreparado == VERDADERO Y cafeDisponible == VERDADERO) {
+    MOSTRAR("El pedido está listo para servir")
+}
+
+Tipos:
+pedidoPreparado -> BOOLEANO
+cafeDisponible -> BOOLEANO
+
+
+Regla 13 — Descuento para el cliente
+
+El cliente puede recibir un descuento si tiene un cupón
+O es un cliente frecuente.
+
+SI (tieneCupon == VERDADERO O clienteFrecuente == VERDADERO) {
+    MOSTRAR("El cliente tiene descuento")
+}
+
+Tipos:
+tieneCupon -> BOOLEANO
+clienteFrecuente -> BOOLEANO
+
+
+Regla 14 — Temperatura ideal
+
+La temperatura del agua es ideal cuando se encuentra
+entre 85 y 95 grados.
+
+SI (temperaturaAgua >= 85 Y temperaturaAgua <= 95) {
+    MOSTRAR("La temperatura es ideal para preparar el café")
+}
+
+Tipo:
+temperaturaAgua -> DECIMAL
+
+
+Regla 15 — Compra con beneficio
+
+El cliente puede realizar una compra con beneficio cuando
+tiene suficiente saldo Y es un cliente frecuente.
+
+SI (saldoCliente >= precioCafe Y clienteFrecuente == VERDADERO) {
+    MOSTRAR("Compra aprobada con beneficio")
+}
+
+Tipos:
+saldoCliente -> DECIMAL
+precioCafe -> DECIMAL
+clienteFrecuente -> BOOLEANO
 
